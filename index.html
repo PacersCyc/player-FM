@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="referrer" content="never">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script type="text/javascript">
+		var w = document.documentElement.clientWidth
+		console.log(w)
+		var scale = w/600
+		console.log(scale) 
+		var css = 'html{font-size:'+600*scale/10+'px;}'
+		var style = document.createElement('style')
+		style.innerHTML = css
+		document.head.appendChild(style)
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+	<title>自制音乐播放器</title>
+</head>
+
+<body>
+	<div class="FM-ct">
+		<!--播放器主界面-->
+		<div class="player">
+			<div class="main">
+				
+				<div class="song-info">
+					<ul class="lyric"></ul>
+					<img class="cover"></img>
+					<div class="songName"></div>
+					<div class="songer"></div>
+					<div class="channelName"></div>
+				</div>
+				<audio autoplay="autoplay">
+					您的浏览器不支持音频格式文件
+				</audio>
+
+				<div class="volume-ct">
+					<span class="volume iconfont icon-yinliang"></span>
+					<div class="volume-column">
+						<div class="volume-bar"></div>
+					</div>
+				</div>
+				
+			</div>
+
+			<!--进度条-->
+			<div class="basebar-ct">
+				<div class="basebar">
+					<div class="progressbar"></div>
+					<span class="cur-time"></span>
+					<span class="total-time"></span>
+				</div>
+			</div>			
+			
+
+			<!--控制面板-->
+			<div class="controls">
+				<span class="play-mode iconfont icon-shunxubofang" title="顺序播放"></span>
+				<span class="prev-song iconfont icon-shangyishou"></span>
+				<span class="suspend iconfont icon-zanting"></span>
+				<span class="next-song iconfont icon-xiayishou"></span>
+				<span class="lyric-show iconfont icon-gecidiaozheng" title="歌词开关"></span>			
+			</div>
+			<div class="playlist">
+				Playlist
+				<div class="to-channels" title="频道切换"></div>
+				<div class="to-songs" title="歌曲列表"></div>
+			</div>
+		</div>
+
+
+		<!--电台频道面板-->
+		<div class="channels-ct">
+			<span class="iconfont icon-fanhui"></span>
+			<h2>电台频道</h2>
+			<ul class="channels"></ul>
+		</div>
+
+		<!--歌曲列表-->
+		<div class="songs-list">
+			<span class="iconfont icon-fanhui1"></span>
+			<ul class="tabs">
+				<li class="recent-listened">最近听过</li>
+			</ul>
+			<ul class="songs"></ul>
+		</div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="./js/player.js" type="text/javascript"></script>
+</body>
+</html>
