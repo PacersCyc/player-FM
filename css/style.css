@@ -15,7 +15,9 @@ ul,li{
 }
 
 .FM-ct{
-	position: relative;
+	position: absolute;
+	top:0;
+	bottom:0;
 	width:10rem;
 	height:100%;
 }
@@ -246,6 +248,7 @@ ul,li{
 	overflow-y: auto;
 }
 .FM-ct .channels-ct .channels>li{
+	font-size:0.333333333rem;
 	padding:0.1333333333rem 0.666666667rem;
 	background:#242b34;
 	color:#fff;
@@ -259,6 +262,7 @@ ul,li{
 
 
 .FM-ct .songs-list{
+	display: none;
 	overflow: hidden;
 	position: absolute;
 	top:0;

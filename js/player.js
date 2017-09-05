@@ -87,7 +87,8 @@ Player.prototype = {
 			var songs = self.$ct.find('.songs-list .songs>li')
 			console.log(songs.length)
 			$.each(songs,function(index){
-				if(self.audio.attr('src') === songs.eq(index).attr('data-url')){
+				//if(self.audio.attr('data-sid') === songs.eq(index).attr('data-sid')){
+				if(self.songName.text() === songs.eq(index).attr('data-title') && self.songer.text() === songs.eq(index).attr('data-artist')){
 					console.log(index)
 					if(index>0){
 						console.log('prev')
@@ -108,7 +109,8 @@ Player.prototype = {
 			console.log(songs.length)
 			if(songs.length>1){
 				$.each(songs,function(index){
-					if(self.audio.attr('src') === songs.eq(index).attr('data-url')){
+					//if(self.audio.attr('data-sid') === songs.eq(index).attr('data-sid')){
+					if(self.songName.text() === songs.eq(index).attr('data-title') && self.songer.text() === songs.eq(index).attr('data-artist')){
 						console.log(index)
 						if(songs.eq(index+1).attr('data-url')){
 							console.log('next')
@@ -196,6 +198,7 @@ Player.prototype = {
 
 		//歌曲列表展示
 		this.toSongs.on('click',function(){
+			self.songsList.show()
 			self.songsList.animate({
 				right:'0'
 			},200)
@@ -213,6 +216,7 @@ Player.prototype = {
 			self.songsList.animate({
 				right:'-600'
 			},200)
+			//self.songsList.hide()
 		})
 
 		//点击频道切换
@@ -238,6 +242,7 @@ Player.prototype = {
 			console.log(target)
 			if(target.tagName.toLowerCase() === 'li'){
 				self.audio.attr('src',$(target).attr('data-url'))
+				self.audio.attr('data-sid',$(target).attr('data-sid'))
 				self.songName.text($(target).attr('data-title'))
 				self.songer.text($(target).attr('data-artist'))
 				self.channelName.text($(target).find('.song-channel').text())
@@ -252,6 +257,7 @@ Player.prototype = {
 				},200)
 			}else{
 				self.audio.attr('src',$(target).parents('.songs>li').attr('data-url'))
+				self.audio.attr('data-sid',$(target).parents('.songs>li').attr('data-sid'))
 				self.songName.text($(target).parents('.songs>li').attr('data-title'))
 				self.songer.text($(target).parents('.songs>li').attr('data-artist'))
 				self.channelName.text($(target).parents('.song-channel').text())
@@ -343,6 +349,7 @@ Player.prototype = {
 		this.songName.text(data.title)
 		this.songer.text(data.artist)
 		this.audio.attr('src',data.url)
+		this.audio.attr('data-sid',data.sid)
 		this.cover.attr('src',data.picture)
 		this.cover.css({
 		 	'width':66.66666667+'%',
